@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
-    
+
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"
@@ -27,10 +28,15 @@
             width: 100%;
             min-height: 100vh;
             min-height: 100dvh;
+
+            padding: 24px;
+
             font-family: Arial, sans-serif;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             background-color: #ffffff;
             background-image: url("Fondo_Centrado_1080x1920.png");
             background-size: cover;
@@ -39,65 +45,243 @@
         }
 
         .card {
-            width: 315px;
-            max-width: 90vw;
+            width: 480px;
+            max-width: 94vw;
+
+            padding: 26px;
+
             background: rgba(255, 255, 255, 0.97);
+
             border-top: 6px solid #D8242A;
             border-bottom: 6px solid #7A2947;
             border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.10);
+
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
         }
 
         h1 {
-            text-align: center;
+            margin-bottom: 10px;
+
             color: #333333;
-            margin-bottom: 12px;
-            font-size: 20px;
+
+            text-align: center;
+            font-size: 24px;
             line-height: 1.25;
         }
 
         .subtitulo {
-            text-align: center;
+            margin-bottom: 24px;
+
             color: #555555;
-            margin-bottom: 20px;
-            font-size: 12px;
+
+            text-align: center;
+            font-size: 13px;
             line-height: 1.6;
+        }
+
+        .seccion {
+            margin: 22px 0;
+        }
+
+        .titulo-seccion {
+            margin-bottom: 14px;
+            padding-bottom: 7px;
+
+            color: #7A2947;
+
+            border-bottom: 1px solid #E3E3E3;
+
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .grupo-campo {
+            margin-bottom: 14px;
+        }
+
+        .grupo-campo label {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #333333;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .obligatorio {
+            color: #D8242A;
+        }
+
+        .campo {
+            width: 100%;
+
+            padding: 10px 11px;
+
+            background-color: #FFFFFF;
+            color: #333333;
+
+            border: 1px solid #CFCFCF;
+            border-radius: 6px;
+
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .campo:focus {
+            border-color: #7A2947;
+            box-shadow: 0 0 0 3px rgba(122, 41, 71, 0.12);
+        }
+
+        .fila {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .pregunta {
+            margin-bottom: 14px;
+
+            color: #333333;
+
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .escala-likert {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 7px;
+        }
+
+        .opcion-likert input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .opcion-likert label {
+            min-height: 72px;
+
+            padding: 8px 4px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            background-color: #F7F7F7;
+            color: #555555;
+
+            border: 1px solid #D8D8D8;
+            border-radius: 7px;
+
+            text-align: center;
+            font-size: 9px;
+            line-height: 1.25;
+
+            cursor: pointer;
+
+            transition:
+                background-color 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .opcion-likert label:hover {
+            border-color: #7A2947;
+            transform: translateY(-1px);
+        }
+
+        .opcion-likert .numero {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #7A2947;
+
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .opcion-likert input:checked + label {
+            background-color: #7A2947;
+            color: #FFFFFF;
+            border-color: #7A2947;
+        }
+
+        .opcion-likert input:checked + label .numero {
+            color: #FFFFFF;
         }
 
         .area-archivo {
             width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
+            text-align: center;
         }
 
         input[type="file"] {
             display: block;
+
             width: 100%;
             max-width: 100%;
-            font-size: 12px;
+
+            padding: 8px;
+
+            background-color: #F7F7F7;
+
+            border: 1px dashed #BFBFBF;
+            border-radius: 6px;
+
+            font-size: 11px;
+        }
+
+        .leyenda-archivo {
+            margin-top: 7px;
+
+            color: #777777;
+
+            text-align: center;
+            font-size: 10px;
+            line-height: 1.4;
         }
 
         .btn {
             display: block;
+
             width: 100%;
+
             margin: 0 auto;
-            padding: 12px;
-            background: #7A2947;
-            color: #ffffff;
+            padding: 13px;
+
+            background-color: #7A2947;
+            color: #FFFFFF;
+
             border: none;
-            border-radius: 5px;
-            font-size: 12px;
+            border-radius: 6px;
+
+            font-size: 13px;
             font-weight: 600;
+
             cursor: pointer;
+
             transition:
                 background-color 0.3s ease,
                 opacity 0.3s ease;
         }
 
         .btn:hover {
-            background: #D8242A;
+            background-color: #D8242A;
         }
 
         .btn:disabled {
@@ -107,16 +291,21 @@
 
         #contador {
             display: block;
+
             margin-top: 16px;
+
             color: #666666;
+
             text-align: center;
             font-size: 11px;
             line-height: 1.4;
+
             overflow-wrap: anywhere;
         }
 
         #resultado {
             margin-top: 16px;
+
             text-align: center;
             font-size: 12px;
             font-weight: bold;
@@ -131,64 +320,73 @@
             color: #D8242A;
         }
 
-        /*
-         * Ajustes para celulares y tabletas verticales.
-         * Esta sección debe colocarse fuera del bloque body.
-         */
         @media screen and (max-width: 768px) {
             body {
                 min-height: 100vh;
                 min-height: 100dvh;
 
-                padding:
-                    max(16px, env(safe-area-inset-top))
-                    16px
-                    max(16px, env(safe-area-inset-bottom));
+                align-items: flex-start;
 
-                /*
-                 * Ajusta el fondo al alto dinámico del navegador.
-                 * El valor 110dvh amplía ligeramente la imagen
-                 * para evitar franjas blancas.
-                 */
+                padding:
+                    max(18px, env(safe-area-inset-top))
+                    14px
+                    max(18px, env(safe-area-inset-bottom));
+
                 background-size: auto 110dvh;
                 background-position: center center;
                 background-attachment: scroll;
             }
 
             .card {
-                width: 315px;
-                max-width: 92vw;
-
-                padding: 20px;
-            }
-        }
-
-        /*
-         * Ajuste para pantallas móviles muy pequeñas.
-         */
-        @media screen and (max-width: 380px) {
-            .card {
+                width: 100%;
                 max-width: 94vw;
-                padding: 18px;
+
+                padding: 21px 18px;
             }
 
             h1 {
-                font-size: 19px;
+                font-size: 21px;
             }
 
-            .subtitulo {
-                font-size: 11px;
+            .fila {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .escala-likert {
+                gap: 4px;
+            }
+
+            .opcion-likert label {
+                min-height: 68px;
+                padding: 6px 2px;
+                font-size: 8px;
+            }
+
+            .opcion-likert .numero {
+                font-size: 18px;
             }
         }
 
-        /*
-         * Ajuste para pantallas horizontales o de poca altura.
-         */
-        @media screen and (max-height: 650px) {
-            body {
-                align-items: flex-start;
-                padding-top: 24px;
-                padding-bottom: 24px;
+        @media screen and (max-width: 360px) {
+            .escala-likert {
+                grid-template-columns: 1fr;
+            }
+
+            .opcion-likert label {
+                min-height: auto;
+
+                padding: 10px 14px;
+                gap: 10px;
+
+                flex-direction: row;
+                justify-content: flex-start;
+
+                font-size: 11px;
+            }
+
+            .opcion-likert .numero {
+                margin: 0;
             }
         }
     </style>
@@ -204,146 +402,561 @@
 
         <div class="subtitulo">
             Nos gustaría conocer cómo viviste esta capacitación.
-            Comparte las fotos o videos que hayas tomado durante el curso.
+            Registra tus datos y comparte las fotos o videos que hayas
+            tomado durante el curso.
         </div>
 
-        <div class="area-archivo">
-            <input
-                type="file"
-                id="files"
-                multiple
-                accept=".jpg,.jpeg,.png,.mp4,.mov"
+        <form id="formularioEvidencias">
+
+            <section class="seccion">
+
+                <div class="titulo-seccion">
+                    Información del participante
+                </div>
+
+                <div class="fila">
+
+                    <div class="grupo-campo">
+                        <label for="apellidoPaterno">
+                            Apellido paterno
+                            <span class="obligatorio">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="apellidoPaterno"
+                            class="campo"
+                            maxlength="60"
+                            autocomplete="family-name"
+                            required
+                        >
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="apellidoMaterno">
+                            Apellido materno
+                            <span class="obligatorio">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="apellidoMaterno"
+                            class="campo"
+                            maxlength="60"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="nombres">
+                        Nombre(s)
+                        <span class="obligatorio">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombres"
+                        class="campo"
+                        maxlength="100"
+                        autocomplete="given-name"
+                        required
+                    >
+                </div>
+
+                <div class="fila">
+
+                    <div class="grupo-campo">
+                        <label for="numeroColaborador">
+                            Número de colaborador
+                            <span class="obligatorio">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="numeroColaborador"
+                            class="campo"
+                            maxlength="20"
+                            inputmode="numeric"
+                            pattern="[0-9]+"
+                            required
+                        >
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="puesto">
+                            Puesto
+                            <span class="obligatorio">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="puesto"
+                            class="campo"
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="seccion">
+
+                <div class="titulo-seccion">
+                    Evaluación del curso
+                </div>
+
+                <div class="pregunta">
+                    Basándote en tu percepción,
+                    ¿cómo calificarías el curso?
+                    <span class="obligatorio">*</span>
+                </div>
+
+                <div class="escala-likert">
+
+                    <div class="opcion-likert">
+                        <input
+                            type="radio"
+                            id="calificacion1"
+                            name="calificacion"
+                            value="1"
+                            required
+                        >
+
+                        <label for="calificacion1">
+                            <span class="numero">1</span>
+                            Muy malo
+                        </label>
+                    </div>
+
+                    <div class="opcion-likert">
+                        <input
+                            type="radio"
+                            id="calificacion2"
+                            name="calificacion"
+                            value="2"
+                        >
+
+                        <label for="calificacion2">
+                            <span class="numero">2</span>
+                            Malo
+                        </label>
+                    </div>
+
+                    <div class="opcion-likert">
+                        <input
+                            type="radio"
+                            id="calificacion3"
+                            name="calificacion"
+                            value="3"
+                        >
+
+                        <label for="calificacion3">
+                            <span class="numero">3</span>
+                            Regular
+                        </label>
+                    </div>
+
+                    <div class="opcion-likert">
+                        <input
+                            type="radio"
+                            id="calificacion4"
+                            name="calificacion"
+                            value="4"
+                        >
+
+                        <label for="calificacion4">
+                            <span class="numero">4</span>
+                            Muy bueno
+                        </label>
+                    </div>
+
+                    <div class="opcion-likert">
+                        <input
+                            type="radio"
+                            id="calificacion5"
+                            name="calificacion"
+                            value="5"
+                        >
+
+                        <label for="calificacion5">
+                            <span class="numero">5</span>
+                            Excelente
+                        </label>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="seccion">
+
+                <div class="titulo-seccion">
+                    Evidencia fotográfica o de video
+                </div>
+
+                <div class="area-archivo">
+
+                    <input
+                        type="file"
+                        id="files"
+                        multiple
+                        accept=".jpg,.jpeg,.png,.mp4,.mov"
+                        required
+                    >
+
+                    <div class="leyenda-archivo">
+                        Puedes seleccionar una o varias fotografías o videos.
+                    </div>
+
+                </div>
+
+            </section>
+
+            <button
+                type="submit"
+                id="btnEnviar"
+                class="btn"
             >
-        </div>
+                Enviar información y archivos
+            </button>
 
-        <button
-            type="button"
-            id="btnEnviar"
-            class="btn"
-            onclick="subirArchivos()"
-        >
-            Enviar archivos
-        </button>
+            <span id="contador" aria-live="polite"></span>
 
-        <span id="contador" aria-live="polite"></span>
+            <p id="resultado" aria-live="polite"></p>
 
-        <p id="resultado" aria-live="polite"></p>
+        </form>
 
     </main>
 
     <script>
         /*
-         * Pega aquí únicamente la URL del desencadenador HTTP.
-         * No agregues etiquetas <a>, href ni otros elementos HTML.
+         * Pega únicamente la nueva URL del flujo de Power Automate.
          */
-        const FLOW_URL = "PEGA_AQUI_LA_NUEVA_URL_DE_POWER_AUTOMATE";
+        const FLOW_URL =
+            "PEGA_AQUI_LA_NUEVA_URL_DE_POWER_AUTOMATE";
+
+        const formulario =
+            document.getElementById("formularioEvidencias");
+
+        /*
+         * Genera un identificador único para relacionar
+         * la fila de Excel con todos los archivos del envío.
+         */
+        function generarIdEnvio() {
+            if (
+                window.crypto &&
+                typeof window.crypto.randomUUID === "function"
+            ) {
+                return window.crypto.randomUUID();
+            }
+
+            return (
+                "ENV-" +
+                Date.now() +
+                "-" +
+                Math.random().toString(16).slice(2)
+            );
+        }
+
+        /*
+         * Fecha y hora local del dispositivo.
+         * No se muestra ni se solicita al participante.
+         */
+        function obtenerFechaHoraCliente() {
+            const ahora = new Date();
+
+            const anio = ahora.getFullYear();
+
+            const mes = String(
+                ahora.getMonth() + 1
+            ).padStart(2, "0");
+
+            const dia = String(
+                ahora.getDate()
+            ).padStart(2, "0");
+
+            const horas = String(
+                ahora.getHours()
+            ).padStart(2, "0");
+
+            const minutos = String(
+                ahora.getMinutes()
+            ).padStart(2, "0");
+
+            const segundos = String(
+                ahora.getSeconds()
+            ).padStart(2, "0");
+
+            return (
+                `${anio}-${mes}-${dia} ` +
+                `${horas}:${minutos}:${segundos}`
+            );
+        }
 
         async function convertirABase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
 
                 reader.onload = () => {
-                    const contenidoBase64 = reader.result.split(",")[1];
+                    const contenidoBase64 =
+                        reader.result.split(",")[1];
+
                     resolve(contenidoBase64);
                 };
 
                 reader.onerror = () => {
-                    reject(new Error("No fue posible leer el archivo."));
+                    reject(
+                        new Error(
+                            "No fue posible leer el archivo."
+                        )
+                    );
                 };
 
                 reader.readAsDataURL(file);
             });
         }
 
+        function obtenerDatosFormulario() {
+            const calificacionSeleccionada =
+                document.querySelector(
+                    'input[name="calificacion"]:checked'
+                );
+
+            return {
+                apellidoPaterno:
+                    document
+                        .getElementById("apellidoPaterno")
+                        .value
+                        .trim(),
+
+                apellidoMaterno:
+                    document
+                        .getElementById("apellidoMaterno")
+                        .value
+                        .trim(),
+
+                nombres:
+                    document
+                        .getElementById("nombres")
+                        .value
+                        .trim(),
+
+                numeroColaborador:
+                    document
+                        .getElementById("numeroColaborador")
+                        .value
+                        .trim(),
+
+                puesto:
+                    document
+                        .getElementById("puesto")
+                        .value
+                        .trim(),
+
+                calificacion:
+                    calificacionSeleccionada
+                        ? Number(calificacionSeleccionada.value)
+                        : null
+            };
+        }
+
         function mostrarError(mensaje) {
-            const resultado = document.getElementById("resultado");
+            const resultado =
+                document.getElementById("resultado");
 
             resultado.className = "error";
             resultado.textContent = mensaje;
         }
 
-        async function subirArchivos() {
-            const selector = document.getElementById("files");
-            const archivos = selector.files;
+        async function enviarSolicitud(datos) {
+            const response = await fetch(FLOW_URL, {
+                method: "POST",
 
-            const resultado = document.getElementById("resultado");
-            const contador = document.getElementById("contador");
-            const boton = document.getElementById("btnEnviar");
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-            resultado.textContent = "";
-            resultado.className = "";
-            contador.textContent = "";
+                body: JSON.stringify(datos)
+            });
 
-            if (archivos.length === 0) {
-                mostrarError("Seleccione al menos un archivo.");
-                return;
-            }
-
-            if (
-                !FLOW_URL ||
-                FLOW_URL === "PEGA_AQUI_LA_NUEVA_URL_DE_POWER_AUTOMATE"
-            ) {
-                mostrarError(
-                    "La dirección de Power Automate no está configurada."
+            if (!response.ok) {
+                throw new Error(
+                    `Error HTTP: ${response.status}`
                 );
-                return;
             }
 
-            boton.disabled = true;
-            boton.textContent = "Enviando archivos...";
+            return response;
+        }
 
-            try {
-                for (let i = 0; i < archivos.length; i++) {
-                    const archivo = archivos[i];
+        formulario.addEventListener(
+            "submit",
+            async function (evento) {
+                evento.preventDefault();
 
-                    contador.textContent =
-                        `Subiendo ${i + 1} de ${archivos.length}: ` +
-                        archivo.name;
+                const resultado =
+                    document.getElementById("resultado");
 
-                    const base64 = await convertirABase64(archivo);
+                const contador =
+                    document.getElementById("contador");
 
-                    const response = await fetch(FLOW_URL, {
-                        method: "POST",
+                const boton =
+                    document.getElementById("btnEnviar");
 
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
+                const selectorArchivos =
+                    document.getElementById("files");
 
-                        body: JSON.stringify({
-                            nombreArchivo: archivo.name,
-                            contenidoArchivo: base64
-                        })
-                    });
+                const archivos = selectorArchivos.files;
 
-                    if (!response.ok) {
-                        throw new Error(
-                            `No fue posible cargar ${archivo.name}. ` +
-                            `Código HTTP: ${response.status}`
-                        );
-                    }
+                resultado.textContent = "";
+                resultado.className = "";
+                contador.textContent = "";
+
+                if (!formulario.checkValidity()) {
+                    formulario.reportValidity();
+                    return;
                 }
 
-                contador.textContent = "";
+                if (archivos.length === 0) {
+                    mostrarError(
+                        "Seleccione al menos una fotografía o video."
+                    );
 
-                resultado.className = "ok";
-                resultado.textContent =
-                    "✓ Archivos cargados correctamente.";
+                    return;
+                }
 
-                selector.value = "";
-            } catch (error) {
-                contador.textContent = "";
+                if (
+                    !FLOW_URL ||
+                    FLOW_URL ===
+                        "PEGA_AQUI_LA_NUEVA_URL_DE_POWER_AUTOMATE"
+                ) {
+                    mostrarError(
+                        "La dirección de Power Automate no está configurada."
+                    );
 
-                mostrarError(
-                    "✖ No fue posible cargar los archivos al repositorio. " +
-                    "Intente nuevamente."
-                );
+                    return;
+                }
 
-                console.error("Error durante la carga:", error);
-            } finally {
-                boton.disabled = false;
-                boton.textContent = "Enviar archivos";
+                /*
+                 * Estos datos se generan automáticamente
+                 * y no aparecen en el formulario.
+                 */
+                const idEnvio = generarIdEnvio();
+
+                const fechaCliente =
+                    obtenerFechaHoraCliente();
+
+                const datosFormulario =
+                    obtenerDatosFormulario();
+
+                boton.disabled = true;
+                boton.textContent = "Enviando información...";
+
+                try {
+                    /*
+                     * Primera solicitud:
+                     * crea una sola fila en Excel.
+                     *
+                     * La fecha oficial debe generarse también
+                     * dentro de Power Automate.
+                     */
+                    contador.textContent =
+                        "Registrando información del participante...";
+
+                    await enviarSolicitud({
+                        tipoSolicitud: "registro",
+
+                        idEnvio: idEnvio,
+
+                        fechaCliente: fechaCliente,
+
+                        apellidoPaterno:
+                            datosFormulario.apellidoPaterno,
+
+                        apellidoMaterno:
+                            datosFormulario.apellidoMaterno,
+
+                        nombres:
+                            datosFormulario.nombres,
+
+                        numeroColaborador:
+                            datosFormulario.numeroColaborador,
+
+                        puesto:
+                            datosFormulario.puesto,
+
+                        calificacion:
+                            datosFormulario.calificacion,
+
+                        cantidadArchivos:
+                            archivos.length
+                    });
+
+                    /*
+                     * Segunda etapa:
+                     * envía cada archivo por separado,
+                     * siempre relacionado con el mismo ID.
+                     */
+                    for (
+                        let i = 0;
+                        i < archivos.length;
+                        i++
+                    ) {
+                        const archivo = archivos[i];
+
+                        contador.textContent =
+                            `Subiendo ${i + 1} de ` +
+                            `${archivos.length}: ${archivo.name}`;
+
+                        const contenidoBase64 =
+                            await convertirABase64(archivo);
+
+                        await enviarSolicitud({
+                            tipoSolicitud: "archivo",
+
+                            idEnvio: idEnvio,
+
+                            nombreArchivo:
+                                archivo.name,
+
+                            tipoArchivo:
+                                archivo.type,
+
+                            contenidoArchivo:
+                                contenidoBase64
+                        });
+                    }
+
+                    contador.textContent = "";
+
+                    resultado.className = "ok";
+                    resultado.textContent =
+                        "✓ Información y archivos " +
+                        "enviados correctamente.";
+
+                    formulario.reset();
+                } catch (error) {
+                    contador.textContent = "";
+
+                    mostrarError(
+                        "✖ No fue posible completar el envío. " +
+                        "Intente nuevamente."
+                    );
+
+                    console.error(
+                        "Error durante el envío:",
+                        error
+                    );
+                } finally {
+                    boton.disabled = false;
+                    boton.textContent =
+                        "Enviar información y archivos";
+                }
             }
-        }
+        );
     </script>
 
 </body>

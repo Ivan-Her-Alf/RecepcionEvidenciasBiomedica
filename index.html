@@ -12,10 +12,6 @@
     <title>Recepción de Evidencias</title>
 
     <style>
-        /* =========================================
-           CONFIGURACIÓN GENERAL
-        ========================================= */
-
         * {
             margin: 0;
             padding: 0;
@@ -44,7 +40,6 @@
             background-color: #F7F7F7;
 
             background-image:
-                /* Diagonal superior izquierda */
                 linear-gradient(
                     135deg,
                     #7A2947 0%,
@@ -54,8 +49,6 @@
                     rgba(216, 36, 42, 0.30) 6.1%,
                     transparent 12%
                 ),
-
-                /* Línea blanca superior */
                 linear-gradient(
                     135deg,
                     transparent 0%,
@@ -64,8 +57,6 @@
                     rgba(255, 255, 255, 0.95) 7.1%,
                     transparent 7.2%
                 ),
-
-                /* Diagonal inferior derecha */
                 linear-gradient(
                     315deg,
                     #7A2947 0%,
@@ -75,8 +66,6 @@
                     rgba(216, 36, 42, 0.30) 7.1%,
                     transparent 14%
                 ),
-
-                /* Línea blanca inferior */
                 linear-gradient(
                     315deg,
                     transparent 0%,
@@ -85,24 +74,18 @@
                     rgba(255, 255, 255, 0.95) 8.1%,
                     transparent 8.2%
                 ),
-
-                /* Luz roja superior izquierda */
                 radial-gradient(
                     circle at top left,
                     rgba(216, 36, 42, 0.22) 0%,
                     rgba(216, 36, 42, 0.10) 18%,
                     transparent 45%
                 ),
-
-                /* Luz vino inferior derecha */
                 radial-gradient(
                     circle at bottom right,
                     rgba(122, 41, 71, 0.25) 0%,
                     rgba(122, 41, 71, 0.10) 20%,
                     transparent 48%
                 ),
-
-                /* Fondo central */
                 linear-gradient(
                     145deg,
                     #FFFFFF 0%,
@@ -115,12 +98,8 @@
             background-attachment: fixed;
         }
 
-        /* =========================================
-           TARJETA PRINCIPAL
-        ========================================= */
-
         .card {
-            width: 500px;
+            width: 560px;
             max-width: 94vw;
 
             padding: 28px;
@@ -156,10 +135,6 @@
             line-height: 1.6;
         }
 
-        /* =========================================
-           SECCIONES
-        ========================================= */
-
         .seccion {
             margin: 24px 0;
         }
@@ -176,11 +151,8 @@
             font-weight: 700;
         }
 
-        /* =========================================
-           CAMPOS
-        ========================================= */
-
         .grupo-campo {
+            min-width: 0;
             margin-bottom: 14px;
         }
 
@@ -222,9 +194,7 @@
 
         .campo:focus {
             border-color: #7A2947;
-
-            box-shadow:
-                0 0 0 3px rgba(122, 41, 71, 0.12);
+            box-shadow: 0 0 0 3px rgba(122, 41, 71, 0.12);
         }
 
         .fila {
@@ -233,55 +203,15 @@
             gap: 12px;
         }
 
-        /* =========================================
-           COMENTARIOS
-        ========================================= */
-
-        .campo-comentarios {
-            width: 100%;
-            min-height: 110px;
-
-            padding: 11px 12px;
-
-            background-color: #FFFFFF;
-            color: #333333;
-
-            border: 1px solid #CCCCCC;
-            border-radius: 7px;
-
-            font-family: Arial, sans-serif;
-            font-size: 13px;
-            line-height: 1.5;
-
-            outline: none;
-            resize: vertical;
-
-            transition:
-                border-color 0.2s ease,
-                box-shadow 0.2s ease;
+        /*
+         * Fila de tres columnas:
+         * número, puesto y marca.
+         */
+        .fila-tres {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr 1fr;
+            gap: 12px;
         }
-
-        .campo-comentarios:focus {
-            border-color: #7A2947;
-
-            box-shadow:
-                0 0 0 3px rgba(122, 41, 71, 0.12);
-        }
-
-        .contador-caracteres {
-            display: block;
-
-            margin-top: 5px;
-
-            color: #777777;
-
-            text-align: right;
-            font-size: 9px;
-        }
-
-        /* =========================================
-           ESCALA LIKERT
-        ========================================= */
 
         .pregunta {
             margin-bottom: 15px;
@@ -302,7 +232,6 @@
 
         .opcion-likert input {
             position: absolute;
-
             opacity: 0;
             pointer-events: none;
         }
@@ -357,22 +286,48 @@
             color: #FFFFFF;
             border-color: #7A2947;
 
-            box-shadow:
-                0 5px 12px rgba(122, 41, 71, 0.22);
+            box-shadow: 0 5px 12px rgba(122, 41, 71, 0.22);
         }
 
         .opcion-likert input:checked + label .numero {
             color: #FFFFFF;
         }
 
-        .opcion-likert input:focus-visible + label {
-            outline: 3px solid rgba(216, 36, 42, 0.30);
-            outline-offset: 2px;
+        .campo-comentarios {
+            width: 100%;
+            min-height: 110px;
+
+            padding: 11px 12px;
+
+            background-color: #FFFFFF;
+            color: #333333;
+
+            border: 1px solid #CCCCCC;
+            border-radius: 7px;
+
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.5;
+
+            outline: none;
+            resize: vertical;
         }
 
-        /* =========================================
-           ARCHIVOS
-        ========================================= */
+        .campo-comentarios:focus {
+            border-color: #7A2947;
+            box-shadow: 0 0 0 3px rgba(122, 41, 71, 0.12);
+        }
+
+        .contador-caracteres {
+            display: block;
+
+            margin-top: 5px;
+
+            color: #777777;
+
+            text-align: right;
+            font-size: 9px;
+        }
 
         .area-archivo {
             width: 100%;
@@ -387,10 +342,6 @@
             text-align: center;
         }
 
-        /*
-         * El selector nativo queda oculto.
-         * La etiqueta funciona como botón.
-         */
         input[type="file"] {
             position: absolute;
 
@@ -432,7 +383,6 @@
         .btn-elegir-archivos:hover {
             background-color: #7A2947;
             color: #FFFFFF;
-
             transform: translateY(-1px);
         }
 
@@ -470,10 +420,6 @@
             line-height: 1.4;
         }
 
-        /* =========================================
-           BOTÓN DE ENVÍO
-        ========================================= */
-
         .btn {
             display: block;
 
@@ -493,8 +439,7 @@
 
             cursor: pointer;
 
-            box-shadow:
-                0 5px 12px rgba(122, 41, 71, 0.18);
+            box-shadow: 0 5px 12px rgba(122, 41, 71, 0.18);
 
             transition:
                 background-color 0.3s ease,
@@ -512,10 +457,6 @@
             opacity: 0.65;
             transform: none;
         }
-
-        /* =========================================
-           MENSAJES
-        ========================================= */
 
         #contador {
             display: block;
@@ -548,10 +489,6 @@
             color: #D8242A;
         }
 
-        /* =========================================
-           DISEÑO RESPONSIVO
-        ========================================= */
-
         @media screen and (max-width: 768px) {
             body {
                 min-height: 100vh;
@@ -582,7 +519,11 @@
                 font-size: 12px;
             }
 
-            .fila {
+            /*
+             * En celular las filas se colocan verticalmente.
+             */
+            .fila,
+            .fila-tres {
                 grid-template-columns: 1fr;
                 gap: 0;
             }
@@ -713,7 +654,8 @@
 
                 </div>
 
-                <div class="fila">
+                <!-- FILA DE TRES CAMPOS -->
+                <div class="fila-tres">
 
                     <div class="grupo-campo">
 
@@ -748,6 +690,33 @@
                             maxlength="100"
                             required
                         >
+
+                    </div>
+
+                    <div class="grupo-campo">
+
+                        <label for="marca">
+                            Marca
+                            <span class="obligatorio">*</span>
+                        </label>
+
+                        <select
+                            id="marca"
+                            class="campo"
+                            required
+                        >
+                            <option value="" selected disabled>
+                                Selecciona
+                            </option>
+
+                            <option value="BIOMEDICA">
+                                BIOMÉDICA
+                            </option>
+
+                            <option value="POLAB">
+                                POLAB
+                            </option>
+                        </select>
 
                     </div>
 
@@ -944,7 +913,7 @@
 
     <script>
         /*
-         * Sustituye este texto por la URL vigente
+         * Sustituye el texto por la URL vigente
          * de Power Automate.
          */
         const FLOW_URL =
@@ -959,10 +928,6 @@
         const campoComentarios =
             document.getElementById("comentarios");
 
-        /*
-         * Genera automáticamente un identificador único
-         * que relaciona Excel y los archivos de SharePoint.
-         */
         function generarIdEnvio() {
             if (
                 window.crypto &&
@@ -979,10 +944,6 @@
             );
         }
 
-        /*
-         * Genera la fecha y hora local del dispositivo.
-         * Power Automate también generará la fecha oficial.
-         */
         function obtenerFechaHoraCliente() {
             const ahora = new Date();
 
@@ -1020,9 +981,6 @@
             );
         }
 
-        /*
-         * Convierte cada fotografía o video a Base64.
-         */
         async function convertirABase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -1046,9 +1004,6 @@
             });
         }
 
-        /*
-         * Obtiene los valores capturados.
-         */
         function obtenerDatosFormulario() {
             const calificacionSeleccionada =
                 document.querySelector(
@@ -1086,6 +1041,11 @@
                         .value
                         .trim(),
 
+                marca:
+                    document
+                        .getElementById("marca")
+                        .value,
+
                 calificacion:
                     calificacionSeleccionada
                         ? Number(calificacionSeleccionada.value)
@@ -1099,9 +1059,6 @@
             };
         }
 
-        /*
-         * Actualiza el contador del campo de comentarios.
-         */
         function actualizarContadorComentarios() {
             const contadorComentarios =
                 document.getElementById(
@@ -1113,10 +1070,6 @@
                 `de 1000 caracteres`;
         }
 
-        /*
-         * Muestra los nombres y el número de archivos
-         * seleccionados.
-         */
         function actualizarArchivosSeleccionados() {
             const texto =
                 document.getElementById(
@@ -1141,8 +1094,7 @@
 
             if (archivos.length === 1) {
                 texto.textContent =
-                    `Archivo seleccionado: ` +
-                    `${archivos[0].name}`;
+                    `Archivo seleccionado: ${archivos[0].name}`;
 
                 return;
             }
@@ -1173,9 +1125,6 @@
             resultado.textContent = mensaje;
         }
 
-        /*
-         * Envía una solicitud JSON a Power Automate.
-         */
         async function enviarSolicitud(datos) {
             const response = await fetch(FLOW_URL, {
                 method: "POST",
@@ -1196,9 +1145,6 @@
             return response;
         }
 
-        /*
-         * Eventos de actualización visual.
-         */
         campoComentarios.addEventListener(
             "input",
             actualizarContadorComentarios
@@ -1209,9 +1155,6 @@
             actualizarArchivosSeleccionados
         );
 
-        /*
-         * Envío principal del formulario.
-         */
         formulario.addEventListener(
             "submit",
 
@@ -1234,9 +1177,6 @@
                 resultado.className = "";
                 contador.textContent = "";
 
-                /*
-                 * Activa las validaciones HTML.
-                 */
                 if (!formulario.checkValidity()) {
                     formulario.reportValidity();
                     return;
@@ -1272,14 +1212,12 @@
                     obtenerDatosFormulario();
 
                 boton.disabled = true;
-
                 boton.textContent =
                     "Enviando información...";
 
                 try {
                     /*
-                     * PRIMERA SOLICITUD:
-                     * crea una fila en Excel.
+                     * Registro histórico para Excel.
                      */
                     contador.textContent =
                         "Registrando la información del participante...";
@@ -1306,6 +1244,9 @@
                         puesto:
                             datosFormulario.puesto,
 
+                        marca:
+                            datosFormulario.marca,
+
                         calificacion:
                             datosFormulario.calificacion,
 
@@ -1317,8 +1258,7 @@
                     });
 
                     /*
-                     * SOLICITUDES POSTERIORES:
-                     * manda cada archivo con el mismo ID.
+                     * Carga individual de evidencias.
                      */
                     for (
                         let i = 0;
@@ -1387,9 +1327,6 @@
             }
         );
 
-        /*
-         * Estado visual inicial.
-         */
         actualizarArchivosSeleccionados();
         actualizarContadorComentarios();
     </script>

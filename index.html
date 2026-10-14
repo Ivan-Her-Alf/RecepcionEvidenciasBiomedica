@@ -12,6 +12,10 @@
     <title>Recepción de Evidencias</title>
 
     <style>
+        /* =========================================
+           CONFIGURACIÓN GENERAL
+        ========================================= */
+
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +25,7 @@
         html {
             width: 100%;
             min-height: 100%;
-            background-color: #ffffff;
+            background-color: #F7F7F7;
         }
 
         body {
@@ -29,7 +33,7 @@
             min-height: 100vh;
             min-height: 100dvh;
 
-            padding: 24px;
+            padding: 30px;
 
             font-family: Arial, sans-serif;
 
@@ -37,30 +41,109 @@
             justify-content: center;
             align-items: center;
 
-            background-color: #ffffff;
-            background-image: url("Fondo_Centrado_1080x1920.png");
-            background-size: cover;
-            background-position: center center;
+            /*
+             * Fondo institucional creado completamente con CSS.
+             *
+             * Biomédica: rojo #D8242A
+             * POLAB: vino #7A2947
+             */
+            background-color: #F7F7F7;
+
+            background-image:
+                /* Diagonal superior izquierda */
+                linear-gradient(
+                    135deg,
+                    #7A2947 0%,
+                    #7A2947 3.5%,
+                    #D8242A 3.6%,
+                    #D8242A 6%,
+                    rgba(216, 36, 42, 0.30) 6.1%,
+                    transparent 12%
+                ),
+
+                /* Línea blanca superior */
+                linear-gradient(
+                    135deg,
+                    transparent 0%,
+                    transparent 6.5%,
+                    rgba(255, 255, 255, 0.95) 6.6%,
+                    rgba(255, 255, 255, 0.95) 7.1%,
+                    transparent 7.2%
+                ),
+
+                /* Diagonal inferior derecha */
+                linear-gradient(
+                    315deg,
+                    #7A2947 0%,
+                    #7A2947 4%,
+                    #D8242A 4.1%,
+                    #D8242A 7%,
+                    rgba(216, 36, 42, 0.30) 7.1%,
+                    transparent 14%
+                ),
+
+                /* Línea blanca inferior */
+                linear-gradient(
+                    315deg,
+                    transparent 0%,
+                    transparent 7.5%,
+                    rgba(255, 255, 255, 0.95) 7.6%,
+                    rgba(255, 255, 255, 0.95) 8.1%,
+                    transparent 8.2%
+                ),
+
+                /* Luz roja superior izquierda */
+                radial-gradient(
+                    circle at top left,
+                    rgba(216, 36, 42, 0.22) 0%,
+                    rgba(216, 36, 42, 0.10) 18%,
+                    transparent 45%
+                ),
+
+                /* Luz vino inferior derecha */
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(122, 41, 71, 0.25) 0%,
+                    rgba(122, 41, 71, 0.10) 20%,
+                    transparent 48%
+                ),
+
+                /* Fondo central */
+                linear-gradient(
+                    145deg,
+                    #FFFFFF 0%,
+                    #F8F8F8 35%,
+                    #EFEFEF 70%,
+                    #FFFFFF 100%
+                );
+
             background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
+        /* =========================================
+           TARJETA PRINCIPAL
+        ========================================= */
+
         .card {
-            width: 480px;
+            width: 500px;
             max-width: 94vw;
 
-            padding: 26px;
+            padding: 28px;
 
-            background: rgba(255, 255, 255, 0.97);
+            background: rgba(255, 255, 255, 0.96);
 
             border-top: 6px solid #D8242A;
             border-bottom: 6px solid #7A2947;
-            border-radius: 16px;
+            border-radius: 18px;
 
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+            box-shadow:
+                0 18px 45px rgba(69, 23, 42, 0.18),
+                0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         h1 {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
 
             color: #333333;
 
@@ -79,21 +162,29 @@
             line-height: 1.6;
         }
 
+        /* =========================================
+           SECCIONES
+        ========================================= */
+
         .seccion {
-            margin: 22px 0;
+            margin: 24px 0;
         }
 
         .titulo-seccion {
-            margin-bottom: 14px;
-            padding-bottom: 7px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
 
             color: #7A2947;
 
-            border-bottom: 1px solid #E3E3E3;
+            border-bottom: 1px solid #E1E1E1;
 
             font-size: 15px;
             font-weight: 700;
         }
+
+        /* =========================================
+           CAMPOS DE TEXTO
+        ========================================= */
 
         .grupo-campo {
             margin-bottom: 14px;
@@ -117,13 +208,13 @@
         .campo {
             width: 100%;
 
-            padding: 10px 11px;
+            padding: 11px 12px;
 
             background-color: #FFFFFF;
             color: #333333;
 
-            border: 1px solid #CFCFCF;
-            border-radius: 6px;
+            border: 1px solid #CCCCCC;
+            border-radius: 7px;
 
             font-family: Arial, sans-serif;
             font-size: 13px;
@@ -137,7 +228,9 @@
 
         .campo:focus {
             border-color: #7A2947;
-            box-shadow: 0 0 0 3px rgba(122, 41, 71, 0.12);
+
+            box-shadow:
+                0 0 0 3px rgba(122, 41, 71, 0.12);
         }
 
         .fila {
@@ -146,8 +239,12 @@
             gap: 12px;
         }
 
+        /* =========================================
+           ESCALA LIKERT
+        ========================================= */
+
         .pregunta {
-            margin-bottom: 14px;
+            margin-bottom: 15px;
 
             color: #333333;
 
@@ -165,12 +262,13 @@
 
         .opcion-likert input {
             position: absolute;
+
             opacity: 0;
             pointer-events: none;
         }
 
         .opcion-likert label {
-            min-height: 72px;
+            min-height: 75px;
 
             padding: 8px 4px;
 
@@ -183,7 +281,7 @@
             color: #555555;
 
             border: 1px solid #D8D8D8;
-            border-radius: 7px;
+            border-radius: 8px;
 
             text-align: center;
             font-size: 9px;
@@ -200,7 +298,7 @@
 
         .opcion-likert label:hover {
             border-color: #7A2947;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
         .opcion-likert .numero {
@@ -218,15 +316,28 @@
             background-color: #7A2947;
             color: #FFFFFF;
             border-color: #7A2947;
+
+            box-shadow:
+                0 5px 12px rgba(122, 41, 71, 0.22);
         }
 
         .opcion-likert input:checked + label .numero {
             color: #FFFFFF;
         }
 
+        .opcion-likert input:focus-visible + label {
+            outline: 3px solid rgba(216, 36, 42, 0.30);
+            outline-offset: 2px;
+        }
+
+        /* =========================================
+           ARCHIVOS
+        ========================================= */
+
         .area-archivo {
             width: 100%;
             margin-bottom: 16px;
+
             text-align: center;
         }
 
@@ -236,18 +347,18 @@
             width: 100%;
             max-width: 100%;
 
-            padding: 8px;
+            padding: 10px;
 
-            background-color: #F7F7F7;
+            background-color: #F8F8F8;
 
-            border: 1px dashed #BFBFBF;
-            border-radius: 6px;
+            border: 1px dashed #AFAFAF;
+            border-radius: 7px;
 
             font-size: 11px;
         }
 
         .leyenda-archivo {
-            margin-top: 7px;
+            margin-top: 8px;
 
             color: #777777;
 
@@ -256,38 +367,52 @@
             line-height: 1.4;
         }
 
+        /* =========================================
+           BOTÓN
+        ========================================= */
+
         .btn {
             display: block;
 
             width: 100%;
 
             margin: 0 auto;
-            padding: 13px;
+            padding: 14px;
 
             background-color: #7A2947;
             color: #FFFFFF;
 
             border: none;
-            border-radius: 6px;
+            border-radius: 7px;
 
             font-size: 13px;
             font-weight: 600;
 
             cursor: pointer;
 
+            box-shadow:
+                0 5px 12px rgba(122, 41, 71, 0.18);
+
             transition:
                 background-color 0.3s ease,
-                opacity 0.3s ease;
+                opacity 0.3s ease,
+                transform 0.2s ease;
         }
 
         .btn:hover {
             background-color: #D8242A;
+            transform: translateY(-1px);
         }
 
         .btn:disabled {
             cursor: not-allowed;
             opacity: 0.65;
+            transform: none;
         }
+
+        /* =========================================
+           MENSAJES
+        ========================================= */
 
         #contador {
             display: block;
@@ -320,6 +445,10 @@
             color: #D8242A;
         }
 
+        /* =========================================
+           DISEÑO RESPONSIVO
+        ========================================= */
+
         @media screen and (max-width: 768px) {
             body {
                 min-height: 100vh;
@@ -328,12 +457,10 @@
                 align-items: flex-start;
 
                 padding:
-                    max(18px, env(safe-area-inset-top))
+                    max(22px, env(safe-area-inset-top))
                     14px
-                    max(18px, env(safe-area-inset-bottom));
+                    max(22px, env(safe-area-inset-bottom));
 
-                background-size: auto 110dvh;
-                background-position: center center;
                 background-attachment: scroll;
             }
 
@@ -341,11 +468,15 @@
                 width: 100%;
                 max-width: 94vw;
 
-                padding: 21px 18px;
+                padding: 22px 18px;
             }
 
             h1 {
                 font-size: 21px;
+            }
+
+            .subtitulo {
+                font-size: 12px;
             }
 
             .fila {
@@ -358,8 +489,10 @@
             }
 
             .opcion-likert label {
-                min-height: 68px;
+                min-height: 70px;
+
                 padding: 6px 2px;
+
                 font-size: 8px;
             }
 
@@ -408,6 +541,7 @@
 
         <form id="formularioEvidencias">
 
+            <!-- INFORMACIÓN DEL PARTICIPANTE -->
             <section class="seccion">
 
                 <div class="titulo-seccion">
@@ -417,6 +551,7 @@
                 <div class="fila">
 
                     <div class="grupo-campo">
+
                         <label for="apellidoPaterno">
                             Apellido paterno
                             <span class="obligatorio">*</span>
@@ -430,9 +565,11 @@
                             autocomplete="family-name"
                             required
                         >
+
                     </div>
 
                     <div class="grupo-campo">
+
                         <label for="apellidoMaterno">
                             Apellido materno
                             <span class="obligatorio">*</span>
@@ -445,11 +582,13 @@
                             maxlength="60"
                             required
                         >
+
                     </div>
 
                 </div>
 
                 <div class="grupo-campo">
+
                     <label for="nombres">
                         Nombre(s)
                         <span class="obligatorio">*</span>
@@ -463,11 +602,13 @@
                         autocomplete="given-name"
                         required
                     >
+
                 </div>
 
                 <div class="fila">
 
                     <div class="grupo-campo">
+
                         <label for="numeroColaborador">
                             Número de colaborador
                             <span class="obligatorio">*</span>
@@ -482,9 +623,11 @@
                             pattern="[0-9]+"
                             required
                         >
+
                     </div>
 
                     <div class="grupo-campo">
+
                         <label for="puesto">
                             Puesto
                             <span class="obligatorio">*</span>
@@ -497,12 +640,14 @@
                             maxlength="100"
                             required
                         >
+
                     </div>
 
                 </div>
 
             </section>
 
+            <!-- EVALUACIÓN -->
             <section class="seccion">
 
                 <div class="titulo-seccion">
@@ -518,6 +663,7 @@
                 <div class="escala-likert">
 
                     <div class="opcion-likert">
+
                         <input
                             type="radio"
                             id="calificacion1"
@@ -530,9 +676,11 @@
                             <span class="numero">1</span>
                             Muy malo
                         </label>
+
                     </div>
 
                     <div class="opcion-likert">
+
                         <input
                             type="radio"
                             id="calificacion2"
@@ -544,9 +692,11 @@
                             <span class="numero">2</span>
                             Malo
                         </label>
+
                     </div>
 
                     <div class="opcion-likert">
+
                         <input
                             type="radio"
                             id="calificacion3"
@@ -558,9 +708,11 @@
                             <span class="numero">3</span>
                             Regular
                         </label>
+
                     </div>
 
                     <div class="opcion-likert">
+
                         <input
                             type="radio"
                             id="calificacion4"
@@ -572,9 +724,11 @@
                             <span class="numero">4</span>
                             Muy bueno
                         </label>
+
                     </div>
 
                     <div class="opcion-likert">
+
                         <input
                             type="radio"
                             id="calificacion5"
@@ -586,12 +740,14 @@
                             <span class="numero">5</span>
                             Excelente
                         </label>
+
                     </div>
 
                 </div>
 
             </section>
 
+            <!-- EVIDENCIAS -->
             <section class="seccion">
 
                 <div class="titulo-seccion">
@@ -634,7 +790,8 @@
 
     <script>
         /*
-         * Pega únicamente la nueva URL del flujo de Power Automate.
+         * Sustituye únicamente el texto entre comillas
+         * por la URL nueva del flujo de Power Automate.
          */
         const FLOW_URL =
             "PEGA_AQUI_LA_NUEVA_URL_DE_POWER_AUTOMATE";
@@ -643,8 +800,8 @@
             document.getElementById("formularioEvidencias");
 
         /*
-         * Genera un identificador único para relacionar
-         * la fila de Excel con todos los archivos del envío.
+         * Genera automáticamente un ID para relacionar
+         * la respuesta histórica con todos sus archivos.
          */
         function generarIdEnvio() {
             if (
@@ -663,33 +820,29 @@
         }
 
         /*
-         * Fecha y hora local del dispositivo.
-         * No se muestra ni se solicita al participante.
+         * Fecha y hora del celular o computadora.
+         * El usuario no necesita capturarla.
          */
         function obtenerFechaHoraCliente() {
             const ahora = new Date();
 
-            const anio = ahora.getFullYear();
+            const anio =
+                ahora.getFullYear();
 
-            const mes = String(
-                ahora.getMonth() + 1
-            ).padStart(2, "0");
+            const mes =
+                String(ahora.getMonth() + 1).padStart(2, "0");
 
-            const dia = String(
-                ahora.getDate()
-            ).padStart(2, "0");
+            const dia =
+                String(ahora.getDate()).padStart(2, "0");
 
-            const horas = String(
-                ahora.getHours()
-            ).padStart(2, "0");
+            const horas =
+                String(ahora.getHours()).padStart(2, "0");
 
-            const minutos = String(
-                ahora.getMinutes()
-            ).padStart(2, "0");
+            const minutos =
+                String(ahora.getMinutes()).padStart(2, "0");
 
-            const segundos = String(
-                ahora.getSeconds()
-            ).padStart(2, "0");
+            const segundos =
+                String(ahora.getSeconds()).padStart(2, "0");
 
             return (
                 `${anio}-${mes}-${dia} ` +
@@ -697,6 +850,10 @@
             );
         }
 
+        /*
+         * Convierte cada archivo a Base64 para enviarlo
+         * mediante el desencadenador HTTP.
+         */
         async function convertirABase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -794,6 +951,7 @@
 
         formulario.addEventListener(
             "submit",
+
             async function (evento) {
                 evento.preventDefault();
 
@@ -809,7 +967,8 @@
                 const selectorArchivos =
                     document.getElementById("files");
 
-                const archivos = selectorArchivos.files;
+                const archivos =
+                    selectorArchivos.files;
 
                 resultado.textContent = "";
                 resultado.className = "";
@@ -840,11 +999,8 @@
                     return;
                 }
 
-                /*
-                 * Estos datos se generan automáticamente
-                 * y no aparecen en el formulario.
-                 */
-                const idEnvio = generarIdEnvio();
+                const idEnvio =
+                    generarIdEnvio();
 
                 const fechaCliente =
                     obtenerFechaHoraCliente();
@@ -853,18 +1009,17 @@
                     obtenerDatosFormulario();
 
                 boton.disabled = true;
-                boton.textContent = "Enviando información...";
+                boton.textContent =
+                    "Enviando información...";
 
                 try {
                     /*
-                     * Primera solicitud:
-                     * crea una sola fila en Excel.
-                     *
-                     * La fecha oficial debe generarse también
-                     * dentro de Power Automate.
+                     * PRIMERA SOLICITUD:
+                     * Envía una sola respuesta para crear
+                     * la fila histórica en Excel.
                      */
                     contador.textContent =
-                        "Registrando información del participante...";
+                        "Registrando la información del participante...";
 
                     await enviarSolicitud({
                         tipoSolicitud: "registro",
@@ -896,20 +1051,22 @@
                     });
 
                     /*
-                     * Segunda etapa:
-                     * envía cada archivo por separado,
-                     * siempre relacionado con el mismo ID.
+                     * SOLICITUDES POSTERIORES:
+                     * Envía cada archivo por separado,
+                     * conservando el mismo ID.
                      */
                     for (
                         let i = 0;
                         i < archivos.length;
                         i++
                     ) {
-                        const archivo = archivos[i];
+                        const archivo =
+                            archivos[i];
 
                         contador.textContent =
                             `Subiendo ${i + 1} de ` +
-                            `${archivos.length}: ${archivo.name}`;
+                            `${archivos.length}: ` +
+                            archivo.name;
 
                         const contenidoBase64 =
                             await convertirABase64(archivo);
@@ -933,6 +1090,7 @@
                     contador.textContent = "";
 
                     resultado.className = "ok";
+
                     resultado.textContent =
                         "✓ Información y archivos " +
                         "enviados correctamente.";
@@ -952,6 +1110,7 @@
                     );
                 } finally {
                     boton.disabled = false;
+
                     boton.textContent =
                         "Enviar información y archivos";
                 }

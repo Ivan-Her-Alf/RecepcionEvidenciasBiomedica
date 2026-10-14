@@ -27,11 +27,18 @@
 	    	display:flex;
             justify-content:center;
             align-items:center;
-			box-sizing:border-box;
 	    	background-image: url("Fondo_Centrado_1080x1920.png");
-	    	background-size: auto 110dvh;
+	    	background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
+
+			@media screen and (max-width: 768px) {
+				body{
+					min-height:100dvh;
+					background-size: auto 110dvh;
+					background-position:center center;
+				}
+			}
         }
 
         .card{

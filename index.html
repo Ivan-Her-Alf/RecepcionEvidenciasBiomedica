@@ -15,13 +15,22 @@
         }
 
         body{
+	    	margin:0;	    
+	    	width:100%;
+	    	min-height:100%;	
+		}
+
+        body{
             font-family: Arial, sans-serif;
             min-height:100vh;
-            display:flex;
+            min-height:100dvh;
+	    	display:flex;
             justify-content:center;
             align-items:center;
-            background-image: url("Fondo_Centrado_1080x1920.png");
-			background-size: cover;
+	    	padding:20px;
+	    	box-sizing:border-box;
+	    	background-image: url("Fondo_Centrado_1080x1920.png");
+	    	background-size: auto 100dvh;
             background-position: center center;
             background-repeat: no-repeat;
         }
@@ -105,7 +114,6 @@
 </head>
 
 <body>
-
 <div class="card">
 
     <h1>
@@ -132,10 +140,10 @@
     </button>
 
     <span id="contador"></span>
+	
     <p id="resultado"></p>
-
+	
 </div>
-
 <script>
 
 // RECUERDA REMPLAZAR ESTA CADENA POR TU URL REAL DE MICROSOFT POWER AUTOMATE
@@ -166,9 +174,7 @@ async function subirArchivos(){
     try{
         for(let i=0;i<archivos.length;i++){
             contador.innerHTML = `Subiendo ${i+1} de ${archivos.length}: ${archivos[i].name}`;
-
             const base64 = await convertirABase64(archivos[i]);
-
             const response = await fetch(
                 FLOW_URL,
                 {

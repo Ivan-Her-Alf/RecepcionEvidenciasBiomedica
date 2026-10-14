@@ -41,12 +41,6 @@
             justify-content: center;
             align-items: center;
 
-            /*
-             * Fondo institucional creado completamente con CSS.
-             *
-             * Biomédica: rojo #D8242A
-             * POLAB: vino #7A2947
-             */
             background-color: #F7F7F7;
 
             background-image:
@@ -131,7 +125,7 @@
 
             padding: 28px;
 
-            background: rgba(255, 255, 255, 0.96);
+            background: rgba(255, 255, 255, 0.97);
 
             border-top: 6px solid #D8242A;
             border-bottom: 6px solid #7A2947;
@@ -183,7 +177,7 @@
         }
 
         /* =========================================
-           CAMPOS DE TEXTO
+           CAMPOS
         ========================================= */
 
         .grupo-campo {
@@ -237,6 +231,52 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
+        }
+
+        /* =========================================
+           COMENTARIOS
+        ========================================= */
+
+        .campo-comentarios {
+            width: 100%;
+            min-height: 110px;
+
+            padding: 11px 12px;
+
+            background-color: #FFFFFF;
+            color: #333333;
+
+            border: 1px solid #CCCCCC;
+            border-radius: 7px;
+
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.5;
+
+            outline: none;
+            resize: vertical;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .campo-comentarios:focus {
+            border-color: #7A2947;
+
+            box-shadow:
+                0 0 0 3px rgba(122, 41, 71, 0.12);
+        }
+
+        .contador-caracteres {
+            display: block;
+
+            margin-top: 5px;
+
+            color: #777777;
+
+            text-align: right;
+            font-size: 9px;
         }
 
         /* =========================================
@@ -336,28 +376,91 @@
 
         .area-archivo {
             width: 100%;
-            margin-bottom: 16px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            margin-bottom: 18px;
 
             text-align: center;
         }
 
+        /*
+         * El selector nativo queda oculto.
+         * La etiqueta funciona como botón.
+         */
         input[type="file"] {
+            position: absolute;
+
+            width: 1px;
+            height: 1px;
+
+            overflow: hidden;
+
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .btn-elegir-archivos {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+
+            min-width: 190px;
+
+            padding: 11px 18px;
+
+            background-color: #F5F5F5;
+            color: #7A2947;
+
+            border: 1px solid #7A2947;
+            border-radius: 7px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                background-color 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .btn-elegir-archivos:hover {
+            background-color: #7A2947;
+            color: #FFFFFF;
+
+            transform: translateY(-1px);
+        }
+
+        .archivos-seleccionados {
             display: block;
 
             width: 100%;
-            max-width: 100%;
+            max-width: 360px;
 
-            padding: 10px;
+            margin-top: 12px;
 
-            background-color: #F8F8F8;
+            color: #555555;
 
-            border: 1px dashed #AFAFAF;
-            border-radius: 7px;
-
+            text-align: center;
             font-size: 11px;
+            line-height: 1.5;
+
+            overflow-wrap: anywhere;
+        }
+
+        .archivos-seleccionados.vacio {
+            color: #888888;
+            font-style: italic;
         }
 
         .leyenda-archivo {
+            max-width: 330px;
+
             margin-top: 8px;
 
             color: #777777;
@@ -368,7 +471,7 @@
         }
 
         /* =========================================
-           BOTÓN
+           BOTÓN DE ENVÍO
         ========================================= */
 
         .btn {
@@ -498,6 +601,11 @@
 
             .opcion-likert .numero {
                 font-size: 18px;
+            }
+
+            .btn-elegir-archivos {
+                width: 100%;
+                max-width: 280px;
             }
         }
 
@@ -747,6 +855,37 @@
 
             </section>
 
+            <!-- COMENTARIOS -->
+            <section class="seccion">
+
+                <div class="titulo-seccion">
+                    Comentarios adicionales
+                </div>
+
+                <div class="grupo-campo">
+
+                    <label for="comentarios">
+                        Comparte tus comentarios sobre el curso
+                    </label>
+
+                    <textarea
+                        id="comentarios"
+                        class="campo-comentarios"
+                        maxlength="1000"
+                        placeholder="Escribe aquí tus comentarios, sugerencias o aspectos que consideres importantes."
+                    ></textarea>
+
+                    <span
+                        id="contadorComentarios"
+                        class="contador-caracteres"
+                    >
+                        0 de 1000 caracteres
+                    </span>
+
+                </div>
+
+            </section>
+
             <!-- EVIDENCIAS -->
             <section class="seccion">
 
@@ -764,8 +903,23 @@
                         required
                     >
 
+                    <label
+                        for="files"
+                        class="btn-elegir-archivos"
+                    >
+                        Elegir fotos o videos
+                    </label>
+
+                    <span
+                        id="archivosSeleccionados"
+                        class="archivos-seleccionados vacio"
+                    >
+                        No se han seleccionado archivos.
+                    </span>
+
                     <div class="leyenda-archivo">
-                        Puedes seleccionar una o varias fotografías o videos.
+                        Puedes seleccionar una o varias fotografías o videos
+                        desde tu dispositivo.
                     </div>
 
                 </div>
@@ -790,18 +944,24 @@
 
     <script>
         /*
-         * Sustituye únicamente el texto entre comillas
-         * por la URL nueva del flujo de Power Automate.
+         * Sustituye este texto por la URL vigente
+         * de Power Automate.
          */
         const FLOW_URL =
-            "PEGA_AQUI_LA_NUEVA_URL_DE_POWER_AUTOMATE";
+            "https://default226a5b51d2894b31be72824bcc61e8.91.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/01/workflows/ae587d78901a4e3f9b6c03bdd61a40a2/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=gDlNI-JkT-8kGISG3-Qad7764e_CIp77QA_iOq_uDiU";
 
         const formulario =
             document.getElementById("formularioEvidencias");
 
+        const selectorArchivos =
+            document.getElementById("files");
+
+        const campoComentarios =
+            document.getElementById("comentarios");
+
         /*
-         * Genera automáticamente un ID para relacionar
-         * la respuesta histórica con todos sus archivos.
+         * Genera automáticamente un identificador único
+         * que relaciona Excel y los archivos de SharePoint.
          */
         function generarIdEnvio() {
             if (
@@ -820,8 +980,8 @@
         }
 
         /*
-         * Fecha y hora del celular o computadora.
-         * El usuario no necesita capturarla.
+         * Genera la fecha y hora local del dispositivo.
+         * Power Automate también generará la fecha oficial.
          */
         function obtenerFechaHoraCliente() {
             const ahora = new Date();
@@ -830,19 +990,29 @@
                 ahora.getFullYear();
 
             const mes =
-                String(ahora.getMonth() + 1).padStart(2, "0");
+                String(
+                    ahora.getMonth() + 1
+                ).padStart(2, "0");
 
             const dia =
-                String(ahora.getDate()).padStart(2, "0");
+                String(
+                    ahora.getDate()
+                ).padStart(2, "0");
 
             const horas =
-                String(ahora.getHours()).padStart(2, "0");
+                String(
+                    ahora.getHours()
+                ).padStart(2, "0");
 
             const minutos =
-                String(ahora.getMinutes()).padStart(2, "0");
+                String(
+                    ahora.getMinutes()
+                ).padStart(2, "0");
 
             const segundos =
-                String(ahora.getSeconds()).padStart(2, "0");
+                String(
+                    ahora.getSeconds()
+                ).padStart(2, "0");
 
             return (
                 `${anio}-${mes}-${dia} ` +
@@ -851,8 +1021,7 @@
         }
 
         /*
-         * Convierte cada archivo a Base64 para enviarlo
-         * mediante el desencadenador HTTP.
+         * Convierte cada fotografía o video a Base64.
          */
         async function convertirABase64(file) {
             return new Promise((resolve, reject) => {
@@ -877,6 +1046,9 @@
             });
         }
 
+        /*
+         * Obtiene los valores capturados.
+         */
         function obtenerDatosFormulario() {
             const calificacionSeleccionada =
                 document.querySelector(
@@ -917,8 +1089,80 @@
                 calificacion:
                     calificacionSeleccionada
                         ? Number(calificacionSeleccionada.value)
-                        : null
+                        : null,
+
+                comentarios:
+                    document
+                        .getElementById("comentarios")
+                        .value
+                        .trim()
             };
+        }
+
+        /*
+         * Actualiza el contador del campo de comentarios.
+         */
+        function actualizarContadorComentarios() {
+            const contadorComentarios =
+                document.getElementById(
+                    "contadorComentarios"
+                );
+
+            contadorComentarios.textContent =
+                `${campoComentarios.value.length} ` +
+                `de 1000 caracteres`;
+        }
+
+        /*
+         * Muestra los nombres y el número de archivos
+         * seleccionados.
+         */
+        function actualizarArchivosSeleccionados() {
+            const texto =
+                document.getElementById(
+                    "archivosSeleccionados"
+                );
+
+            const archivos =
+                Array.from(selectorArchivos.files);
+
+            if (archivos.length === 0) {
+                texto.className =
+                    "archivos-seleccionados vacio";
+
+                texto.textContent =
+                    "No se han seleccionado archivos.";
+
+                return;
+            }
+
+            texto.className =
+                "archivos-seleccionados";
+
+            if (archivos.length === 1) {
+                texto.textContent =
+                    `Archivo seleccionado: ` +
+                    `${archivos[0].name}`;
+
+                return;
+            }
+
+            const nombresArchivos =
+                archivos
+                    .slice(0, 3)
+                    .map(
+                        archivo => archivo.name
+                    )
+                    .join(", ");
+
+            const archivosAdicionales =
+                archivos.length > 3
+                    ? ` y ${archivos.length - 3} más`
+                    : "";
+
+            texto.textContent =
+                `${archivos.length} archivos seleccionados: ` +
+                `${nombresArchivos}${archivosAdicionales}`;
         }
 
         function mostrarError(mensaje) {
@@ -929,6 +1173,9 @@
             resultado.textContent = mensaje;
         }
 
+        /*
+         * Envía una solicitud JSON a Power Automate.
+         */
         async function enviarSolicitud(datos) {
             const response = await fetch(FLOW_URL, {
                 method: "POST",
@@ -949,6 +1196,22 @@
             return response;
         }
 
+        /*
+         * Eventos de actualización visual.
+         */
+        campoComentarios.addEventListener(
+            "input",
+            actualizarContadorComentarios
+        );
+
+        selectorArchivos.addEventListener(
+            "change",
+            actualizarArchivosSeleccionados
+        );
+
+        /*
+         * Envío principal del formulario.
+         */
         formulario.addEventListener(
             "submit",
 
@@ -964,9 +1227,6 @@
                 const boton =
                     document.getElementById("btnEnviar");
 
-                const selectorArchivos =
-                    document.getElementById("files");
-
                 const archivos =
                     selectorArchivos.files;
 
@@ -974,6 +1234,9 @@
                 resultado.className = "";
                 contador.textContent = "";
 
+                /*
+                 * Activa las validaciones HTML.
+                 */
                 if (!formulario.checkValidity()) {
                     formulario.reportValidity();
                     return;
@@ -1009,14 +1272,14 @@
                     obtenerDatosFormulario();
 
                 boton.disabled = true;
+
                 boton.textContent =
                     "Enviando información...";
 
                 try {
                     /*
                      * PRIMERA SOLICITUD:
-                     * Envía una sola respuesta para crear
-                     * la fila histórica en Excel.
+                     * crea una fila en Excel.
                      */
                     contador.textContent =
                         "Registrando la información del participante...";
@@ -1046,14 +1309,16 @@
                         calificacion:
                             datosFormulario.calificacion,
 
+                        comentarios:
+                            datosFormulario.comentarios,
+
                         cantidadArchivos:
                             archivos.length
                     });
 
                     /*
                      * SOLICITUDES POSTERIORES:
-                     * Envía cada archivo por separado,
-                     * conservando el mismo ID.
+                     * manda cada archivo con el mismo ID.
                      */
                     for (
                         let i = 0;
@@ -1069,7 +1334,9 @@
                             archivo.name;
 
                         const contenidoBase64 =
-                            await convertirABase64(archivo);
+                            await convertirABase64(
+                                archivo
+                            );
 
                         await enviarSolicitud({
                             tipoSolicitud: "archivo",
@@ -1096,6 +1363,9 @@
                         "enviados correctamente.";
 
                     formulario.reset();
+
+                    actualizarArchivosSeleccionados();
+                    actualizarContadorComentarios();
                 } catch (error) {
                     contador.textContent = "";
 
@@ -1116,6 +1386,12 @@
                 }
             }
         );
+
+        /*
+         * Estado visual inicial.
+         */
+        actualizarArchivosSeleccionados();
+        actualizarContadorComentarios();
     </script>
 
 </body>
